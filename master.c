@@ -24,7 +24,7 @@ void countchar(void);
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
-    countchar();
+    f_to_c_table();
 }
 
 void f_to_c_table(void) {
