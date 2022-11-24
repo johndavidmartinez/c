@@ -19,12 +19,41 @@ void copy_file(void);
 void boolean_value_char_print(void);
 void printEOF(void);
 void countchar(void);
+void linecount(void);
+void countblanktabnew(void);
 
 // Masterfile
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
-    f_to_c_table();
+}
+
+void countblanktabnew(void){
+  int c, bl, tb, nl;
+  bl = tb = nl = 0;
+  while((c=getchar()!=EOF)){
+    if(c=='\n'){
+      nl++;
+    } else if (c=='\t'){
+      tb++;
+    } else if (c==' '){
+      bl++;
+    }
+  }
+  printf("bl: %d tb: %d nl: %d",
+    bl, tb, nl);
+}
+
+void linecount(void) {
+  int c, nl;
+
+  nl = 0;
+  while((c=getchar()!=EOF)){
+    if(c=='\n'){
+      nl++;
+    }
+  }
+  printf("%d\n", nl);
 }
 
 void f_to_c_table(void) {
