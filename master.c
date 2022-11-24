@@ -23,11 +23,18 @@ void linecount(void);
 void countblanktabnew(void);
 void singleblank(void);
 void digitcount(void);
+void wordlengths(void);
 
 // Masterfile
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
+}
+
+void wordlengths(void){
+  int lng[10];
+  //multiples of 5
+  //int division of 5?
 }
 
 void digitcount(void){
@@ -53,7 +60,7 @@ void singleblank(void){
   
   while((c=getchar()!=EOF)){
     if(c==' '){
-      while((d=getchar())!=' ')
+      while((d=getchar())=' ')
       putchar(c);
       putchar(d);
     }else{
