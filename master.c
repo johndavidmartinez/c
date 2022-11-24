@@ -21,11 +21,45 @@ void printEOF(void);
 void countchar(void);
 void linecount(void);
 void countblanktabnew(void);
+void singleblank(void);
+void digitcount(void);
 
 // Masterfile
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
+}
+
+void digitcount(void){
+  int ndigit[10];
+  int c;
+
+  for(int i=0;i<10;i++){
+    ndigit[i]=0;
+  }
+
+  while((c=getchar())!=EOF){
+    if(c>='0'&&c<='9'){
+      ndigit[c-'0']++;
+    }
+  }
+  //and print them but
+  //dont wanna right now
+}
+
+void singleblank(void){
+  int c;
+  int d;
+  
+  while((c=getchar()!=EOF)){
+    if(c==' '){
+      while((d=getchar())!=' ')
+      putchar(c);
+      putchar(d);
+    }else{
+      putchar(c);
+    }
+  }
 }
 
 void countblanktabnew(void){
