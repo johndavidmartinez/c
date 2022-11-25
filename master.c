@@ -24,17 +24,48 @@ void countblanktabnew(void);
 void singleblank(void);
 void digitcount(void);
 void wordlengths(void);
+int min(int a, int b);
 
 // Masterfile
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
+  wordlengths();
 }
 
 void wordlengths(void){
-  int lng[10];
+  int lng[20];
   //multiples of 5
   //int division of 5?
+  for(int i = 0; i < 20; i++) {
+    lng[i] = 0;
+  }
+  int c, d, wl;
+  while((c=getchar())!=EOF){
+    if (c != ' ' && c != '\n') {
+      // we're in a word
+      wl = 1;
+      while((c=getchar())!=EOF && c!=' ' && c!='\n') {
+        wl++;
+      }
+      // out of the word
+      lng[min(wl, 19)-1]++;
+      wl = 0;
+    }
+  }
+  printf("Word lengths\n\n");
+  for (int i = 0; i < 19; i++) {
+    printf("%d : %d\n", i+1, lng[i]);
+  }
+  printf("20+ : %d\n", lng[19]);
+}
+
+int min(int a, int b) {
+  if (a < b) {
+    return a;
+  } else {
+    return b;
+  }
 }
 
 void digitcount(void){
@@ -60,7 +91,7 @@ void singleblank(void){
   
   while((c=getchar()!=EOF)){
     if(c==' '){
-      while((d=getchar())=' ')
+      while((d=getchar())==' ')
       putchar(c);
       putchar(d);
     }else{
