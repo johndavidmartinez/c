@@ -10,6 +10,7 @@
 #define LOWER 0
 #define UPPER 300
 #define STEP 20
+#define MAX_LINE 100
 
 void f_to_c_table(void);
 void f_to_c_table2(void);
@@ -28,11 +29,36 @@ int min(int a, int b);
 int pow(int base, int n);
 float to_celsius(float fahrenheit);
 float to_fahrenheit(float celsius);
+int get_line(char lines[], int max);
+void copy(char to[], char from[]);
 
 // Masterfile
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
+}
+
+void copy(char to[], char from[]){
+  int i=0;
+  while((to[i]=from[i])!='\0'){
+    i++;
+  }
+}
+
+int get_line(char s[], int lim){
+  int c, i;
+
+  for (i=1;i<lim-1&&
+    (c=getchar()!=EOF)&&
+    c!='\n';i++){
+    s[i]=c;
+  }
+  if(c=='\n'){
+    s[i]=c;
+    i++;
+  }
+  s[i]='\0';
+  return i;
 }
 
 int pow(int base, int n){
