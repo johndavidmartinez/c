@@ -25,12 +25,24 @@ void singleblank(void);
 void digitcount(void);
 void wordlengths(void);
 int min(int a, int b);
+int pow(int base, int n);
+float to_celsius(float fahrenheit);
+float to_fahrenheit(float celsius);
 
 // Masterfile
 // All functionality in functions.
 // Main just calls one function to run the program
 int main() {
-  wordlengths();
+}
+
+int pow(int base, int n){
+  int i, p;
+
+  p = 1;
+  for (i = 1; i <= n; ++i){
+    p = p * base;
+  }
+  return p;
 }
 
 void wordlengths(void){
@@ -129,11 +141,11 @@ void linecount(void) {
 }
 
 void f_to_c_table(void) {
-    int fahr, celsius;
+    float fahr, celsius;
 
-    fahr = LOWER;
+    fahr = (float) LOWER;
     while (fahr <= UPPER) {
-        celsius = 5 * (fahr-32) / 9;
+        celsius = to_celsius(fahr);
         printf("\%d\t%d\n", 
         fahr, 
         celsius);
@@ -145,12 +157,11 @@ void f_to_c_table(void) {
 void f_to_c_table2(void) {
     float fahr, celsius;
 
-    fahr = LOWER;
+    fahr = (float) LOWER;
     printf("  F    C\n");
     printf("-----------\n");
     while (fahr <= UPPER) {
-        celsius = (5.0/9.0) * 
-                  (fahr - 32.0);
+        celsius = to_celsius(fahr);
         printf("%3.0f %6.1f\n", 
         fahr, 
         celsius);
@@ -164,8 +175,7 @@ void c_to_f_table(void) {
     celsius = -20;
     printf("   C     F\n");
     while (celsius <= UPPER) {
-        fahr = (celsius + 32) * 
-        (9.0/5.0);
+        fahr = to_fahrenheit(celsius);
         printf("%3.0f %6.1f\n", 
         celsius, fahr);
         celsius = celsius + STEP;
@@ -178,7 +188,7 @@ void f_to_c_table_reverse(void) {
     fahr = UPPER;
     while (fahr >= LOWER) {
         celsius = 5 * (fahr-32) / 9;
-        printf("\%d\t%d\n", fahr, 
+        printf("\%f\t%f\n", fahr, 
         celsius);
         fahr = fahr - STEP;
     }
@@ -219,4 +229,11 @@ void countchar(void) {
         ++nc;
     }
     printf("%ld\n", nc);
+}
+
+float to_celsius(float fahrenheit){
+  return (5.0/9.0) * (fahrenheit - 32.0);
+}
+float to_fahrenheit(float celsius){
+  return (9.0/5.0) * (celsius + 32.0);
 }
